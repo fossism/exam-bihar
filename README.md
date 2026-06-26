@@ -90,3 +90,53 @@ The `seed.js` script populates the database with the following test credentials:
 | **College Admin** | `admin@beuc.edu.in` | `college123` |
 | **Faculty** | `rajesh@beuc.edu.in` | `faculty123` |
 | **Student** | `aarav@student.beuc.edu.in` | `student123` |
+
+---
+
+## Contributing
+
+Contributions to ExamBihar are highly welcome! Whether you are fixing bugs, improving the documentation, or adding new features, follow these steps to contribute:
+
+### 1. Fork the Repository
+Click the **Fork** button at the top-right of this repository's page to create a copy of this repository on your GitHub account.
+
+### 2. Clone Your Fork
+Clone your fork to your local machine:
+```bash
+git clone https://github.com/your-username/online-exam-beu.git
+cd online-exam-beu
+```
+
+### 3. Set Up Local Development Environment
+Follow the instructions under the [Installation & Setup](#installation--setup) section to set up the backend and frontend services. Make sure your local MongoDB instance is running.
+
+### 4. Create a New Branch
+Create a branch for your feature or bug fix. Keep the name descriptive:
+```bash
+git checkout -b feature/your-feature-name
+# or for bug fixes
+git checkout -b bugfix/your-bugfix-name
+```
+
+### 5. Make Changes and Run Tests
+Make your code changes or edits. Before committing, ensure everything is working correctly by following the steps in the [Step-by-Step Testing & Verification Guide](testing_guide.md).
+
+### 6. Commit Your Changes
+Commit your changes with a clear and concise commit message following standard guidelines:
+```bash
+git add .
+git commit -m "feat: add support for real-time exam monitoring"
+```
+
+### 7. Push to Your Fork
+Push your branch to your forked repository:
+```bash
+git push origin feature/your-feature-name
+```
+
+### 8. Open a Pull Request (PR)
+1. Go to the original repository on GitHub.
+2. Click **Pull Requests** and then click **New Pull Request**.
+3. Select your branch from your fork as the source, and request a merge.
+4. Fill out the pull request template describing the changes made and link any related issues.
+
