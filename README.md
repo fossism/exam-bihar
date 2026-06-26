@@ -103,8 +103,8 @@ Click the **Fork** button at the top-right of this repository's page to create a
 ### 2. Clone Your Fork
 Clone your fork to your local machine:
 ```bash
-git clone https://github.com/your-username/online-exam-beu.git
-cd online-exam-beu
+git clone https://github.com/your-username/exam-bihar.git
+cd exam-bihar
 ```
 
 ### 3. Set Up Local Development Environment
