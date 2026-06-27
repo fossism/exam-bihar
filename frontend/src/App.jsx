@@ -29,7 +29,7 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
             width: '40px',
             height: '40px',
             border: '3px solid rgba(255,255,255,0.05)',
-            borderTopColor: '#6366f1',
+            borderTopColor: '#10b981',
             borderRadius: '50%',
             animation: 'spin 1s linear infinite',
             margin: '0 auto 1rem'

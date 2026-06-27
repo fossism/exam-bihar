@@ -26,19 +26,58 @@ const seedData = async () => {
     console.log('Existing database collections cleared.');
 
     // 1. Create Colleges
-    const college1 = await College.create({
-      name: 'Bihar Engineering University Campus (BEUC)',
-      code: 'BEUC',
-      location: 'Patna, Bihar',
-    });
+    const collegesToSeed = [
+      { name: 'Bihar Engineering University Campus (BEUC)', code: 'BEUC', location: 'Patna, Bihar' },
+      { name: 'Muzaffarpur Institute of Technology (MIT)', code: 'MITM', location: 'Muzaffarpur, Bihar' },
+      { name: 'Bhagalpur College of Engineering (BCE)', code: 'BCEB', location: 'Bhagalpur, Bihar' },
+      { name: 'Gaya College of Engineering (GCE)', code: 'GCEG', location: 'Gaya, Bihar' },
+      { name: 'Bakhtiyarpur College of Engineering (BCE)', code: 'BCEBA', location: 'Bakhtiyarpur, Bihar' },
+      { name: 'Nalanda College of Engineering (NCE)', code: 'NCEC', location: 'Chandi, Nalanda, Bihar' },
+      { name: 'Motihari College of Engineering (MCE)', code: 'MCEM', location: 'Motihari, Bihar' },
+      { name: 'Darbhanga College of Engineering (DCE)', code: 'DCED', location: 'Darbhanga, Bihar' },
+      { name: 'Loknayak Jai Prakash Institute of Technology (LNJPIT)', code: 'LNJPIT', location: 'Chapra, Bihar' },
+      { name: 'Saharsa College of Engineering (SCE)', code: 'SCES', location: 'Saharsa, Bihar' },
+      { name: 'Sitamarhi Institute of Technology (SIT)', code: 'SITS', location: 'Sitamarhi, Bihar' },
+      { name: 'B.P. Mandal College of Engineering (BPMCE)', code: 'BPMCE', location: 'Madhepura, Bihar' },
+      { name: 'Katihar Engineering College (KEC)', code: 'KECK', location: 'Katihar, Bihar' },
+      { name: 'Purnea College of Engineering (PCE)', code: 'PCEP', location: 'Purnea, Bihar' },
+      { name: 'Rashtrakavi Ramdhari Singh Dinkar College of Engineering (RRSDCE)', code: 'RRSDCE', location: 'Begusarai, Bihar' },
+      { name: 'Shershah Engineering College (SEC)', code: 'SECS', location: 'Sasaram, Bihar' },
+      { name: 'Supaul College of Engineering (SCE)', code: 'SCESU', location: 'Supaul, Bihar' },
+      { name: 'Shri Phanishwar Nath Renu Engineering College (SPNREC)', code: 'SPNREC', location: 'Araria, Bihar' },
+      { name: 'Government Engineering College (GEC), Banka', code: 'GECBA', location: 'Banka, Bihar' },
+      { name: 'Government Engineering College (GEC), Vaishali', code: 'GECVA', location: 'Vaishali, Bihar' },
+      { name: 'Government Engineering College (GEC), Siwan', code: 'GECSI', location: 'Siwan, Bihar' },
+      { name: 'Government Engineering College (GEC), Nawada', code: 'GECNA', location: 'Nawada, Bihar' },
+      { name: 'Government Engineering College (GEC), Samastipur', code: 'GECSA', location: 'Samastipur, Bihar' },
+      { name: 'Government Engineering College (GEC), Sheikhpura', code: 'GECSH', location: 'Sheikhpura, Bihar' },
+      { name: 'Government Engineering College (GEC), Sheohar', code: 'GECSE', location: 'Sheohar, Bihar' },
+      { name: 'Government Engineering College (GEC), West Champaran', code: 'GECWC', location: 'Bettiah, West Champaran, Bihar' },
+      { name: 'Government Engineering College (GEC), Gopalganj', code: 'GECGO', location: 'Gopalganj, Bihar' },
+      { name: 'Government Engineering College (GEC), Madhubani', code: 'GECMA', location: 'Madhubani, Bihar' },
+      { name: 'Government Engineering College (GEC), Jamui', code: 'GECJA', location: 'Jamui, Bihar' },
+      { name: 'Government Engineering College (GEC), Jehanabad', code: 'GECJE', location: 'Jehanabad, Bihar' },
+      { name: 'Government Engineering College (GEC), Arwal', code: 'GECAR', location: 'Arwal, Bihar' },
+      { name: 'Government Engineering College (GEC), Khagaria', code: 'GECKH', location: 'Khagaria, Bihar' },
+      { name: 'Lakhisarai College of Engineering (LCE)', code: 'LCEL', location: 'Lakhisarai, Bihar' },
+      { name: 'Munger College of Engineering (MCE)', code: 'MCEMU', location: 'Munger, Bihar' },
+      { name: 'Kishanganj College of Engineering (KCE)', code: 'KCEKI', location: 'Kishanganj, Bihar' },
+      { name: 'Buxar College of Engineering (BCE)', code: 'BCEBU', location: 'Buxar, Bihar' },
+      { name: 'Bhojpur College of Engineering (BCE)', code: 'BCEBH', location: 'Bhojpur, Bihar' },
+      { name: 'Government Engineering College (GEC), Aurangabad', code: 'GECAU', location: 'Aurangabad, Bihar' },
+      { name: 'Government Engineering College (GEC), Kaimur', code: 'GECKA', location: 'Kaimur, Bihar' }
+    ];
 
-    const college2 = await College.create({
-      name: 'Muzaffarpur Institute of Technology (MIT)',
-      code: 'MITM',
-      location: 'Muzaffarpur, Bihar',
-    });
+    const createdColleges = [];
+    for (const col of collegesToSeed) {
+      const created = await College.create(col);
+      createdColleges.push(created);
+    }
 
-    console.log('Colleges seeded successfully.');
+    const college1 = createdColleges[0];
+    const college2 = createdColleges[1];
+
+    console.log(`${createdColleges.length} colleges seeded successfully.`);
 
     // 2. Create Super Admin
     const superAdminPass = 'admin123';

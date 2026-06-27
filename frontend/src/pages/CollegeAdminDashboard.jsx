@@ -178,7 +178,7 @@ const CollegeAdminDashboard = () => {
       {/* Sidebar */}
       <div className="sidebar">
         <div className="brand">
-          <Award size={26} color="#6366f1" />
+          <Award size={26} color="#10b981" />
           <span>ExamBihar Admin</span>
         </div>
 
@@ -222,7 +222,7 @@ const CollegeAdminDashboard = () => {
           </div>
         )}
         {csvProgress && (
-          <div style={{ backgroundColor: 'rgba(99, 102, 241, 0.12)', border: '1px solid rgba(99, 102, 241, 0.3)', borderRadius: 'var(--radius-sm)', color: '#a5b4fc', padding: '1rem', marginBottom: '1.5rem' }}>
+          <div style={{ backgroundColor: 'rgba(16, 185, 129, 0.12)', border: '1px solid rgba(16, 185, 129, 0.3)', borderRadius: 'var(--radius-sm)', color: '#34d399', padding: '1rem', marginBottom: '1.5rem' }}>
             {csvProgress}
           </div>
         )}
@@ -233,7 +233,7 @@ const CollegeAdminDashboard = () => {
             {/* Create Faculty Form */}
             <div className="glass-panel" style={{ height: 'fit-content' }}>
               <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <UserPlus size={20} color="#6366f1" /> Create Faculty Account
+                <UserPlus size={20} color="#10b981" /> Create Faculty Account
               </h3>
               
               <form onSubmit={handleCreateFaculty}>
@@ -459,7 +459,7 @@ const CollegeAdminDashboard = () => {
                         <td style={{ fontWeight: '500' }}>{std.name}</td>
                         <td>{std.email}</td>
                         <td>
-                          <span style={{ fontFamily: 'monospace', color: '#6366f1' }}>{std.regNumber}</span>
+                          <span style={{ fontFamily: 'monospace', color: '#10b981' }}>{std.regNumber}</span>
                         </td>
                         <td>{std.branch}</td>
                         <td>

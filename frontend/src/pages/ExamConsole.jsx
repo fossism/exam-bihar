@@ -366,11 +366,11 @@ const ExamConsole = () => {
   const currentResp = responses[currentQ._id] || { selectedOption: undefined, textAnswer: '', codeAnswer: '' };
 
   return (
-    <div style={{ background: '#090d16', minHeight: '100vh' }}>
+    <div style={{ background: '#0a0b0e', minHeight: '100vh' }}>
       {/* Exam Header */}
       <div className="exam-header">
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <Shield size={22} color="#6366f1" />
+          <Shield size={22} color="#10b981" />
           <h2 style={{ fontSize: '1.2rem' }}>Exam Portal Console</h2>
         </div>
 

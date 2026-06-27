@@ -178,7 +178,7 @@ const StudentDashboard = () => {
                             padding: '1.25rem',
                             borderLeft: '4px solid',
                             borderLeftColor: exam.attemptStatus === 'Disqualified' ? 'var(--danger)' : exam.score !== null ? 'var(--success)' : 'var(--warning)',
-                            background: selectedResult?.examId?._id === exam._id ? 'rgba(99, 102, 241, 0.08)' : 'var(--glass-bg)',
+                            background: selectedResult?.examId?._id === exam._id ? 'rgba(16, 185, 129, 0.08)' : 'var(--glass-bg)',
                           }}
                         >
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
@@ -269,7 +269,7 @@ const StudentDashboard = () => {
 
                             {/* Feedbacks */}
                             {ans.feedback && (
-                              <div style={{ marginTop: '0.5rem', fontSize: '0.8rem', color: '#818cf8' }}>
+                              <div style={{ marginTop: '0.5rem', fontSize: '0.8rem', color: '#34d399' }}>
                                 <strong>Feedback:</strong> {ans.feedback}
                               </div>
                             )}
@@ -297,8 +297,8 @@ const GraduationCapIcon = () => (
     width: '1.75rem',
     height: '1.75rem',
     borderRadius: '4px',
-    background: 'rgba(99, 102, 241, 0.15)',
-    color: '#6366f1',
+    background: 'rgba(16, 185, 129, 0.15)',
+    color: '#10b981',
   }}>
     <FileText size={16} />
   </div>

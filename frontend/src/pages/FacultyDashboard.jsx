@@ -286,7 +286,7 @@ const FacultyDashboard = () => {
       {/* Sidebar */}
       <div className="sidebar">
         <div className="brand">
-          <BookOpen size={26} color="#6366f1" />
+          <BookOpen size={26} color="#10b981" />
           <span>ExamBihar Examiner</span>
         </div>
 
@@ -709,7 +709,7 @@ const FacultyDashboard = () => {
                           cursor: 'pointer',
                           borderLeftWidth: '4px',
                           borderLeftColor: att.isGraded ? 'var(--success)' : att.status === 'Disqualified' ? 'var(--danger)' : 'var(--warning)',
-                          background: selectedAttempt?._id === att._id ? 'rgba(99, 102, 241, 0.08)' : 'var(--glass-bg)',
+                          background: selectedAttempt?._id === att._id ? 'rgba(16, 185, 129, 0.08)' : 'var(--glass-bg)',
                         }}
                         onClick={() => selectStudentAttempt(att._id)}
                       >

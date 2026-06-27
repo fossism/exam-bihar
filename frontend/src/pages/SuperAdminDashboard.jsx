@@ -129,7 +129,7 @@ const SuperAdminDashboard = () => {
       {/* Sidebar */}
       <div className="sidebar">
         <div className="brand">
-          <ShieldCheck size={26} color="#6366f1" />
+          <ShieldCheck size={26} color="#10b981" />
           <span>ExamBihar Admin</span>
         </div>
         
@@ -173,7 +173,7 @@ const SuperAdminDashboard = () => {
         {/* Stats Grid */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
           <div className="glass-panel" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <div style={{ background: 'rgba(99, 102, 241, 0.15)', color: '#6366f1', padding: '1rem', borderRadius: 'var(--radius-sm)' }}>
+            <div style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981', padding: '1rem', borderRadius: 'var(--radius-sm)' }}>
               <School size={24} />
             </div>
             <div>
@@ -218,7 +218,7 @@ const SuperAdminDashboard = () => {
           {/* Register College Form */}
           <div className="glass-panel">
             <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <School size={20} color="#6366f1" /> Register Engineering College
+              <School size={20} color="#10b981" /> Register Engineering College
             </h3>
             
             <form onSubmit={handleCreateCollege}>

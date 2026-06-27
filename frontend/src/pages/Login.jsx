@@ -24,6 +24,10 @@ const Login = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
+  // Searchable dropdown states
+  const [collegeSearch, setCollegeSearch] = useState('');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   useEffect(() => {
     const fetchColleges = async () => {
       try {
@@ -31,7 +35,10 @@ const Login = () => {
         if (res.ok) {
           const data = await res.json();
           setColleges(data);
-          if (data.length > 0) setRegCollegeId(data[0]._id);
+          if (data.length > 0) {
+            setRegCollegeId(data[0]._id);
+            setCollegeSearch(data[0].name);
+          }
         }
       } catch (err) {
         console.error('Error fetching colleges:', err);
@@ -39,6 +46,11 @@ const Login = () => {
     };
     fetchColleges();
   }, []);
+
+  const filteredColleges = colleges.filter((c) =>
+    c.name.toLowerCase().includes(collegeSearch.toLowerCase()) ||
+    c.code.toLowerCase().includes(collegeSearch.toLowerCase())
+  );
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
@@ -60,7 +72,7 @@ const Login = () => {
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
     if (!regName || !regEmail || !regPassword || !regCollegeId || !regNumber) {
-      setError('Please fill in all registration fields');
+      setError('Please fill in all registration fields and select a valid college from the dropdown list');
       return;
     }
     setError('');
@@ -107,8 +119,8 @@ const Login = () => {
             width: '3.5rem',
             height: '3.5rem',
             borderRadius: '50%',
-            background: 'rgba(99, 102, 241, 0.15)',
-            color: '#6366f1',
+            background: 'rgba(16, 185, 129, 0.15)',
+            color: '#10b981',
             marginBottom: '1rem',
           }}>
             <Shield size={28} />
@@ -263,25 +275,94 @@ const Login = () => {
               </div>
             </div>
 
-            <div className="form-group">
+            <div className="form-group" style={{ position: 'relative' }}>
               <label className="form-label">Select Engineering College</label>
-              <select
-                className="form-input"
-                style={{ background: 'var(--bg-secondary)', color: 'white' }}
-                value={regCollegeId}
-                onChange={(e) => setRegCollegeId(e.target.value)}
-                required
-              >
-                {colleges.length === 0 ? (
-                  <option value="">No colleges available</option>
-                ) : (
-                  colleges.map((c) => (
-                    <option key={c._id} value={c._id}>
-                      {c.name} ({c.code})
-                    </option>
-                  ))
-                )}
-              </select>
+              <div style={{ position: 'relative' }}>
+                <input
+                  type="text"
+                  className="form-input"
+                  placeholder="Type to search college (e.g. MIT, Gaya)..."
+                  value={collegeSearch}
+                  onChange={(e) => {
+                    setCollegeSearch(e.target.value);
+                    setIsDropdownOpen(true);
+                    const match = colleges.find(c => c.name.toLowerCase() === e.target.value.toLowerCase());
+                    if (match) {
+                      setRegCollegeId(match._id);
+                    } else {
+                      setRegCollegeId('');
+                    }
+                  }}
+                  onFocus={() => setIsDropdownOpen(true)}
+                  onBlur={() => setTimeout(() => setIsDropdownOpen(false), 250)}
+                  required
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.04)',
+                    borderColor: regCollegeId ? 'var(--primary)' : 'rgba(239, 68, 68, 0.4)',
+                  }}
+                />
+                <span style={{
+                  position: 'absolute',
+                  right: '1rem',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  color: 'var(--text-muted)',
+                  pointerEvents: 'none',
+                  fontSize: '0.8rem'
+                }}>
+                  ▼
+                </span>
+              </div>
+
+              {isDropdownOpen && (
+                <div style={{
+                  position: 'absolute',
+                  top: '100%',
+                  left: 0,
+                  right: 0,
+                  background: '#111318',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  borderRadius: 'var(--radius-sm)',
+                  boxShadow: '0 10px 25px rgba(0,0,0,0.5)',
+                  maxHeight: '220px',
+                  overflowY: 'auto',
+                  zIndex: 99,
+                  marginTop: '4px',
+                }}>
+                  {filteredColleges.length === 0 ? (
+                    <div style={{ padding: '0.75rem 1rem', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+                      No colleges found matching "{collegeSearch}"
+                    </div>
+                  ) : (
+                    filteredColleges.map((c) => (
+                      <div
+                        key={c._id}
+                        onClick={() => {
+                          setRegCollegeId(c._id);
+                          setCollegeSearch(c.name);
+                          setIsDropdownOpen(false);
+                        }}
+                        style={{
+                          padding: '0.75rem 1rem',
+                          cursor: 'pointer',
+                          fontSize: '0.9rem',
+                          color: regCollegeId === c._id ? 'var(--primary-hover)' : 'var(--text-main)',
+                          background: regCollegeId === c._id ? 'rgba(16, 185, 129, 0.1)' : 'transparent',
+                          transition: 'background 0.2s',
+                          borderBottom: '1px solid rgba(255,255,255,0.02)',
+                        }}
+                        onMouseDown={(e) => e.preventDefault()}
+                        className="dropdown-item-hover"
+                      >
+                        <div style={{ fontWeight: '500' }}>{c.name}</div>
+                        <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '2px' }}>
+                          Code: {c.code} | {c.location}
+                        </div>
+                      </div>
+                    ))
+                  )}
+                </div>
+              )}
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.75rem' }}>
