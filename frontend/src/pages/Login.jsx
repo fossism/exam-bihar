@@ -1,11 +1,67 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { Shield, BookOpen, GraduationCap, School } from 'lucide-react';
+
+const staticColleges = [
+  { _id: '667cfc10d3f28d5423bc0001', name: 'Bihar Engineering University Campus (BEUC)', code: '100', location: 'Patna, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0002', name: 'Vidya Vihar Institute of Technology, Purnea', code: '102', location: 'Purnea, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0003', name: 'Netaji Subhas Institute of Technology, Bihta', code: '103', location: 'Bihta, Patna, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0004', name: 'Sityog Institute of Technology, Aurangabad', code: '106', location: 'Aurangabad, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0005', name: 'Muzaffarpur Institute of Technology (MIT)', code: '107', location: 'Muzaffarpur, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0006', name: 'Bhagalpur College of Engineering, Bhagalpur', code: '108', location: 'Bhagalpur, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0007', name: 'Nalanda College of Engineering, Chandi', code: '109', location: 'Chandi, Nalanda, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0008', name: 'Gaya College of Engineering, Gaya', code: '110', location: 'Gaya, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0009', name: 'Darbhanga College of Engineering, Darbhanga', code: '111', location: 'Darbhanga, Bihar' },
+  { _id: '667cfc10d3f28d5423bc000a', name: 'Motihari College of Engineering, Motihari', code: '113', location: 'Motihari, Bihar' },
+  { _id: '667cfc10d3f28d5423bc000b', name: 'LNJP Institute of Technology, Chapra', code: '117', location: 'Chapra, Bihar' },
+  { _id: '667cfc10d3f28d5423bc000c', name: 'Buddha Institute of Technology, Gaya', code: '118', location: 'Gaya, Bihar' },
+  { _id: '667cfc10d3f28d5423bc000d', name: 'Adwaita Mission Institute of Technology, Banka', code: '119', location: 'Banka, Bihar' },
+  { _id: '667cfc10d3f28d5423bc000e', name: 'Exalt College of Engineering & Technology, Vaishali', code: '122', location: 'Vaishali, Bihar' },
+  { _id: '667cfc10d3f28d5423bc000f', name: 'Siwan Engineering & Technical Institute, Siwan', code: '123', location: 'Siwan, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0010', name: 'Sershah Engineering College, Sasaram', code: '124', location: 'Sasaram, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0011', name: 'RRSDCE Begusarai', code: '125', location: 'Begusarai, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0012', name: 'Bakhtiyarpur College of Engineering, Patna', code: '126', location: 'Bakhtiyarpur, Patna, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0013', name: 'Sitamarhi Institute of Technology, Sitamarhi', code: '127', location: 'Sitamarhi, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0014', name: 'B. P. Mandal College of Engineering, Madhepura', code: '128', location: 'Madhepura, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0015', name: 'Katihar Engineering College, Katihar', code: '129', location: 'Katihar, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0016', name: 'Supaul College of Engineering, Supaul', code: '130', location: 'Supaul, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0017', name: 'Purnea College of Engineering, Purnea', code: '131', location: 'Purnea, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0018', name: 'Saharsa College of Engineering, Saharsa', code: '132', location: 'Saharsa, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0019', name: 'Government Engineering College, Jamui', code: '133', location: 'Jamui, Bihar' },
+  { _id: '667cfc10d3f28d5423bc001a', name: 'Government Engineering College, Banka', code: '134', location: 'Banka, Bihar' },
+  { _id: '667cfc10d3f28d5423bc001b', name: 'Government Engineering College, Vaishali', code: '135', location: 'Vaishali, Bihar' },
+  { _id: '667cfc10d3f28d5423bc001c', name: 'Mother’s Institute of Technology, Bihta', code: '136', location: 'Bihta, Patna, Bihar' },
+  { _id: '667cfc10d3f28d5423bc001d', name: 'R.P. Sharma Institute of Technology, Patna', code: '139', location: 'Patna, Bihar' },
+  { _id: '667cfc10d3f28d5423bc001e', name: 'Maulana Azad College of Engineering & Technology, Patna', code: '140', location: 'Patna, Bihar' },
+  { _id: '667cfc10d3f28d5423bc001f', name: 'Government Engineering College, Nawada', code: '141', location: 'Nawada, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0020', name: 'Government Engineering College, Kishanganj', code: '142', location: 'Kishanganj, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0021', name: 'Government Engineering College, Munger', code: '144', location: 'Munger, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0022', name: 'Government Engineering College, Sheohar', code: '145', location: 'Sheohar, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0023', name: 'Government Engineering College, West Champaran', code: '146', location: 'Bettiah, West Champaran, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0024', name: 'Government Engineering College, Aurangabad', code: '147', location: 'Aurangabad, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0025', name: 'Government Engineering College, Kaimur', code: '148', location: 'Kaimur, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0026', name: 'Government Engineering College, Gopalganj', code: '149', location: 'Gopalganj, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0027', name: 'Government Engineering College, Madhubani', code: '150', location: 'Madhubani, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0028', name: 'Government Engineering College, Siwan', code: '151', location: 'Siwan, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0029', name: 'Government Engineering College, Jehanabad', code: '152', location: 'Jehanabad, Bihar' },
+  { _id: '667cfc10d3f28d5423bc002a', name: 'Government Engineering College, Arwal', code: '153', location: 'Arwal, Bihar' },
+  { _id: '667cfc10d3f28d5423bc002b', name: 'Government Engineering College, Khagaria', code: '154', location: 'Khagaria, Bihar' },
+  { _id: '667cfc10d3f28d5423bc002c', name: 'Government Engineering College, Buxar', code: '155', location: 'Buxar, Bihar' },
+  { _id: '667cfc10d3f28d5423bc002d', name: 'Government Engineering College, Bhojpur', code: '156', location: 'Bhojpur, Bihar' },
+  { _id: '667cfc10d3f28d5423bc002e', name: 'Government Engineering College, Sheikhpura', code: '157', location: 'Sheikhpura, Bihar' },
+  { _id: '667cfc10d3f28d5423bc002f', name: 'Government Engineering College, Lakhisarai', code: '158', location: 'Lakhisarai, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0030', name: 'Government Engineering College, Samastipur', code: '159', location: 'Samastipur, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0031', name: 'Shri Phanishwar Nath Renu Engineering College, Araria', code: '165', location: 'Araria, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0032', name: 'Millia Kishanganj College of Engineering & Technology, Kishanganj', code: '166', location: 'Kishanganj, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0033', name: 'Millia Institute of Technology, Purnia', code: '167', location: 'Purnia, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0034', name: 'CIPET: Institute of Petrochemicals Technology, Bihta', code: '169', location: 'Bihta, Patna, Bihar' },
+  { _id: '667cfc10d3f28d5423bc0035', name: 'Dr. Ashok Gagan College, Bihta', code: '170', location: 'Bihta, Patna, Bihar' }
+];
 
 const Login = () => {
   const { loginUser, registerUser, error: authError } = useAuth();
   const [isLogin, setIsLogin] = useState(true);
-  const [colleges, setColleges] = useState([]);
+  const [colleges, setColleges] = useState(staticColleges);
   
   // Login Form States
   const [loginEmail, setLoginEmail] = useState('');
@@ -15,7 +71,7 @@ const Login = () => {
   const [regName, setRegName] = useState('');
   const [regEmail, setRegEmail] = useState('');
   const [regPassword, setRegPassword] = useState('');
-  const [regCollegeId, setRegCollegeId] = useState('');
+  const [regCollegeId, setRegCollegeId] = useState(staticColleges[0]._id);
   const [regBranch, setRegBranch] = useState('CSE');
   const [regSemester, setRegSemester] = useState(1);
   const [regNumber, setRegNumber] = useState('');
@@ -25,8 +81,19 @@ const Login = () => {
   const [success, setSuccess] = useState('');
 
   // Searchable dropdown states
-  const [collegeSearch, setCollegeSearch] = useState('');
+  const [collegeSearch, setCollegeSearch] = useState(staticColleges[0].name);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   useEffect(() => {
     const fetchColleges = async () => {
@@ -34,10 +101,16 @@ const Login = () => {
         const res = await fetch('http://localhost:5000/api/colleges');
         if (res.ok) {
           const data = await res.json();
-          setColleges(data);
           if (data.length > 0) {
-            setRegCollegeId(data[0]._id);
-            setCollegeSearch(data[0].name);
+            setColleges(data);
+            // Sync current selection if matches
+            const currentMatch = data.find(c => c.name === collegeSearch);
+            if (currentMatch) {
+              setRegCollegeId(currentMatch._id);
+            } else {
+              setRegCollegeId(data[0]._id);
+              setCollegeSearch(data[0].name);
+            }
           }
         }
       } catch (err) {
@@ -275,7 +348,7 @@ const Login = () => {
               </div>
             </div>
 
-            <div className="form-group" style={{ position: 'relative' }}>
+            <div className="form-group" style={{ position: 'relative' }} ref={dropdownRef}>
               <label className="form-label">Select Engineering College</label>
               <div style={{ position: 'relative' }}>
                 <input
@@ -284,9 +357,10 @@ const Login = () => {
                   placeholder="Type to search college (e.g. MIT, Gaya)..."
                   value={collegeSearch}
                   onChange={(e) => {
-                    setCollegeSearch(e.target.value);
+                    const val = e.target.value;
+                    setCollegeSearch(val);
                     setIsDropdownOpen(true);
-                    const match = colleges.find(c => c.name.toLowerCase() === e.target.value.toLowerCase());
+                    const match = colleges.find(c => c.name.toLowerCase() === val.toLowerCase());
                     if (match) {
                       setRegCollegeId(match._id);
                     } else {
@@ -294,22 +368,25 @@ const Login = () => {
                     }
                   }}
                   onFocus={() => setIsDropdownOpen(true)}
-                  onBlur={() => setTimeout(() => setIsDropdownOpen(false), 250)}
                   required
                   style={{
                     background: 'rgba(255, 255, 255, 0.04)',
-                    borderColor: regCollegeId ? 'var(--primary)' : 'rgba(239, 68, 68, 0.4)',
+                    borderColor: regCollegeId ? 'var(--primary)' : 'rgba(255, 255, 255, 0.1)',
                   }}
                 />
-                <span style={{
-                  position: 'absolute',
-                  right: '1rem',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  color: 'var(--text-muted)',
-                  pointerEvents: 'none',
-                  fontSize: '0.8rem'
-                }}>
+                <span 
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  style={{
+                    position: 'absolute',
+                    right: '1rem',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    color: 'var(--text-muted)',
+                    cursor: 'pointer',
+                    fontSize: '0.8rem',
+                    userSelect: 'none'
+                  }}
+                >
                   ▼
                 </span>
               </div>
@@ -351,7 +428,6 @@ const Login = () => {
                           transition: 'background 0.2s',
                           borderBottom: '1px solid rgba(255,255,255,0.02)',
                         }}
-                        onMouseDown={(e) => e.preventDefault()}
                         className="dropdown-item-hover"
                       >
                         <div style={{ fontWeight: '500' }}>{c.name}</div>

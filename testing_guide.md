@@ -47,14 +47,14 @@ Follow this guide to initialize the databases, run the servers, and test all fou
 2. **Verify College Table**: Check that the pre-seeded engineering colleges are listed.
 3. **Register New College**:
    * *Name*: `Muzaffarpur Institute of Technology`
-   * *Code*: `MITM`
+   * *Code*: `107`
    * *Campus Location*: `Muzaffarpur`
    * Click **Register College** (Confirm it appears immediately in the table).
 4. **Create College Admin**:
    * *Representative Name*: `MIT Registrar Office`
    * *Login Email*: `admin@mitm.edu.in`
    * *Temporary Password*: `college123`
-   * *Assign to College*: Select `Muzaffarpur Institute of Technology (MITM)` from the dropdown.
+   * *Assign to College*: Select `Muzaffarpur Institute of Technology (107)` from the dropdown.
    * Click **Generate College Admin**.
 5. Click **Sign Out** in the sidebar.
 
