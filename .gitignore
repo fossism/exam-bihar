@@ -24,3 +24,7 @@ yarn-error.log*
 .DS_Store
 .vscode/
 .idea/
+
+# PDF and TXT documents
+ugeac2025.pdf
+ugeac2025.txt
