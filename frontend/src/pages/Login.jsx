@@ -62,7 +62,7 @@ const Login = () => {
   const { loginUser, registerUser, error: authError } = useAuth();
   const [isLogin, setIsLogin] = useState(true);
   const [colleges, setColleges] = useState(staticColleges);
-  
+
   // Login Form States
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
@@ -136,7 +136,11 @@ const Login = () => {
     try {
       await loginUser(loginEmail, loginPassword);
     } catch (err) {
-      setError(err.message || 'Login failed. Please check your credentials.');
+      if (err.message && (err.message.includes('fetch') || err.message.toLowerCase().includes('network'))) {
+        setError('Network Error: Cannot connect to the backend server. Please ensure the backend server is running (run "npm run dev" or "npm start" in the backend folder) and MongoDB is active.');
+      } else {
+        setError(err.message || 'Login failed. Please check your credentials.');
+      }
     } finally {
       setLoading(false);
     }
@@ -164,7 +168,11 @@ const Login = () => {
       });
       setSuccess('Registration successful! Logging you in...');
     } catch (err) {
-      setError(err.message || 'Registration failed.');
+      if (err.message && (err.message.includes('fetch') || err.message.toLowerCase().includes('network'))) {
+        setError('Network Error: Cannot connect to the backend server. Please ensure the backend server is running (run "npm run dev" or "npm start" in the backend folder) and MongoDB is active.');
+      } else {
+        setError(err.message || 'Registration failed.');
+      }
     } finally {
       setLoading(false);
     }
@@ -374,7 +382,7 @@ const Login = () => {
                     borderColor: regCollegeId ? 'var(--primary)' : 'rgba(255, 255, 255, 0.1)',
                   }}
                 />
-                <span 
+                <span
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   style={{
                     position: 'absolute',
