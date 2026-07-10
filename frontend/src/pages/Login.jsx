@@ -197,15 +197,15 @@ const Login = () => {
             display: 'inline-flex',
             alignItems: 'center',
             justifyContent: 'center',
-            width: '3.5rem',
-            height: '3.5rem',
+            width: '4.5rem',
+            height: '4.5rem',
             borderRadius: 'var(--radius-sm)',
-            background: 'rgba(0, 255, 102, 0.05)',
-            border: '1px solid rgba(0, 255, 102, 0.2)',
-            color: 'var(--primary)',
+            background: 'rgba(0, 255, 102, 0.03)',
+            border: '1px solid rgba(0, 255, 102, 0.15)',
             marginBottom: '1rem',
+            overflow: 'hidden',
           }}>
-            <Shield size={28} />
+            <img src="/golghar.png" alt="Golghar Logo" style={{ width: '85%', height: '85%', objectFit: 'contain' }} />
           </div>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '1.8rem', color: '#fff', marginBottom: '0.25rem' }}>
             exambihar <span style={{ color: 'var(--primary)' }}>~$</span><span className="terminal-cursor"></span>

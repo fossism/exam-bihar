@@ -177,8 +177,8 @@ const CollegeAdminDashboard = () => {
     <div className="dashboard-layout">
       {/* Sidebar */}
       <div className="sidebar">
-        <div className="brand" style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem' }}>
-          <Award size={22} color="var(--primary)" />
+        <div className="brand" style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <img src="/golghar.png" alt="Golghar Logo" style={{ width: '24px', height: '24px', objectFit: 'contain' }} />
           <span>exambihar <span style={{ color: 'var(--primary)' }}>~$</span></span>
         </div>
 
