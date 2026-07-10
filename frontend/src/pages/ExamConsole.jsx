@@ -366,27 +366,27 @@ const ExamConsole = () => {
   const currentResp = responses[currentQ._id] || { selectedOption: undefined, textAnswer: '', codeAnswer: '' };
 
   return (
-    <div style={{ background: '#0a0b0e', minHeight: '100vh' }}>
+    <div style={{ background: 'var(--bg-primary)', minHeight: '100vh' }}>
       {/* Exam Header */}
       <div className="exam-header">
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <Shield size={22} color="#10b981" />
-          <h2 style={{ fontSize: '1.2rem' }}>Exam Portal Console</h2>
+          <Shield size={22} color="var(--primary)" />
+          <h2 style={{ fontSize: '1.2rem', fontFamily: 'var(--font-display)' }}>Exam Portal Console</h2>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
           {/* Security alerts */}
-          <div style={{ display: 'flex', gap: '1rem', fontSize: '0.8rem' }}>
-            <span style={{ color: tabWarnings > 0 ? '#f59e0b' : 'var(--text-muted)' }}>
+          <div style={{ display: 'flex', gap: '1rem', fontSize: '0.8rem', fontFamily: 'var(--font-mono)' }}>
+            <span style={{ color: tabWarnings > 0 ? 'var(--warning)' : 'var(--text-muted)' }}>
               Tab warnings: {tabWarnings}/{tabLimit}
             </span>
-            <span style={{ color: fullscreenActive ? '#10b981' : '#ef4444' }}>
+            <span style={{ color: fullscreenActive ? 'var(--success)' : 'var(--danger)' }}>
               {fullscreenActive ? 'Fullscreen: ON' : 'Fullscreen: LOCKED OUT'}
             </span>
           </div>
 
           {/* Synced Timer */}
-          <div style={{ background: 'rgba(239, 68, 68, 0.1)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.2)', padding: '0.5rem 1rem', borderRadius: '4px', fontFamily: 'monospace', fontWeight: 'bold', fontSize: '1.1rem' }}>
+          <div style={{ background: 'rgba(255, 51, 51, 0.08)', color: 'var(--danger)', border: '1px solid rgba(255, 51, 51, 0.2)', padding: '0.5rem 1rem', borderRadius: 'var(--radius-sm)', fontFamily: 'var(--font-mono)', fontWeight: 'bold', fontSize: '1.1rem' }}>
             {formatTime(timeLeft)}
           </div>
 
@@ -398,10 +398,10 @@ const ExamConsole = () => {
 
       {/* Screen Lockout Modal if Fullscreen exited */}
       {!fullscreenActive && (
-        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(9, 13, 22, 0.96)', zIndex: 1000, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '2rem' }}>
-          <AlertTriangle size={64} color="#f59e0b" style={{ marginBottom: '1.5rem' }} />
-          <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>FULLSCREEN DETECTED: EXITED</h2>
-          <p style={{ color: 'var(--text-muted)', maxWidth: '500px', marginBottom: '2rem' }}>
+        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', background: '#000000', border: '2px solid var(--danger)', zIndex: 1000, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '2rem' }}>
+          <AlertTriangle size={64} color="var(--warning)" style={{ marginBottom: '1.5rem' }} />
+          <h2 style={{ fontSize: '2rem', fontFamily: 'var(--font-display)', marginBottom: '1rem', color: 'var(--danger)' }}>FULLSCREEN DETECTED: EXITED</h2>
+          <p style={{ color: 'var(--text-main)', fontFamily: 'var(--font-mono)', fontSize: '0.9rem', maxWidth: '600px', marginBottom: '2rem' }}>
             To protect testing integrity, you are locked out. You must activate Fullscreen to continue your exam. Unapproved actions are proctored.
           </p>
           <button className="btn btn-primary" style={{ padding: '0.75rem 2rem' }} onClick={triggerFullscreen}>
@@ -483,23 +483,23 @@ const ExamConsole = () => {
 
                 {/* Local test outputs */}
                 {codeOutputs && (
-                  <div style={{ marginTop: '1rem', background: '#121722', border: '1px solid var(--border-color)', borderRadius: '6px', padding: '1rem' }}>
-                    <h4 style={{ fontSize: '0.9rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-                      <CheckCircle size={14} color="#10b981" /> Test Cases Evaluation Output
+                  <div style={{ marginTop: '1rem', background: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-sm)', padding: '1rem' }}>
+                    <h4 style={{ fontSize: '0.9rem', fontFamily: 'var(--font-display)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                      <CheckCircle size={14} color="var(--primary)" /> Test Cases Evaluation Output
                     </h4>
                     {codeOutputs[0]?.error ? (
-                      <p style={{ color: '#f87171', fontFamily: 'monospace', fontSize: '0.85rem' }}>
+                      <p style={{ color: 'var(--danger)', fontFamily: 'var(--font-mono)', fontSize: '0.85rem' }}>
                         {codeOutputs[0].error}
                       </p>
                     ) : (
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.8rem' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.8rem', fontFamily: 'var(--font-mono)' }}>
                         {codeOutputs.map((tc, tcIdx) => (
-                          <div key={tcIdx} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem', background: 'rgba(0,0,0,0.2)', borderRadius: '4px', borderLeft: tc.passed ? '3px solid #10b981' : '3px solid #ef4444' }}>
+                          <div key={tcIdx} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem', background: '#000000', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-sm)', borderLeft: tc.passed ? '3px solid var(--success)' : '3px solid var(--danger)' }}>
                             <div>
                               <p>Input: <code>{tc.input}</code></p>
                               <p style={{ color: 'var(--text-muted)' }}>Expected: <code>{tc.expected}</code> | Actual: <code>{tc.actual}</code></p>
                             </div>
-                            <span style={{ fontWeight: 'bold', color: tc.passed ? '#34d399' : '#f87171' }}>
+                            <span style={{ fontWeight: 'bold', color: tc.passed ? 'var(--success)' : 'var(--danger)' }}>
                               {tc.passed ? 'PASSED' : 'FAILED'}
                             </span>
                           </div>
@@ -558,20 +558,22 @@ const ExamConsole = () => {
               const isAnswered = resp && (resp.selectedOption !== undefined || resp.textAnswer || resp.codeAnswer);
               const isFlagged = flagged[q._id];
 
-              let bg = 'rgba(255, 255, 255, 0.05)';
+              let bg = 'rgba(255, 255, 255, 0.02)';
               let border = '1px solid var(--border-color)';
               let text = 'var(--text-main)';
 
               if (idx === currentIdx) {
-                border = '2px solid var(--primary)';
+                border = '1px solid var(--primary)';
               }
 
               if (isFlagged) {
-                bg = 'rgba(245, 158, 11, 0.2)';
-                text = '#fbbf24';
+                bg = 'rgba(255, 204, 0, 0.08)';
+                text = 'var(--warning)';
+                border = '1px solid var(--warning)';
               } else if (isAnswered) {
-                bg = 'rgba(16, 185, 129, 0.2)';
-                text = '#34d399';
+                bg = 'rgba(0, 255, 102, 0.08)';
+                text = 'var(--primary)';
+                border = '1px solid var(--primary)';
               }
 
               return (
@@ -613,8 +615,8 @@ const ExamConsole = () => {
                   muted
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 ></video>
-                <div style={{ position: 'absolute', top: '8px', left: '8px', display: 'flex', alignItems: 'center', gap: '4px', background: 'rgba(0,0,0,0.6)', padding: '2px 6px', borderRadius: '50px', fontSize: '10px' }}>
-                  <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981' }}></div>
+                <div style={{ position: 'absolute', top: '8px', left: '8px', display: 'flex', alignItems: 'center', gap: '4px', background: 'rgba(0,0,0,0.8)', border: '1px solid rgba(0,255,102,0.3)', padding: '2px 6px', borderRadius: 'var(--radius-sm)', fontSize: '10px', fontFamily: 'var(--font-mono)', color: 'var(--primary)' }}>
+                  <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--primary)' }}></div>
                   <span>PROCTOR STREAMING</span>
                 </div>
               </div>

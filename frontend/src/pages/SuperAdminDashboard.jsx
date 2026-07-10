@@ -128,9 +128,9 @@ const SuperAdminDashboard = () => {
     <div className="dashboard-layout">
       {/* Sidebar */}
       <div className="sidebar">
-        <div className="brand">
-          <ShieldCheck size={26} color="#10b981" />
-          <span>ExamBihar Admin</span>
+        <div className="brand" style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem' }}>
+          <ShieldCheck size={22} color="var(--primary)" />
+          <span>exambihar <span style={{ color: 'var(--primary)' }}>~$</span></span>
         </div>
         
         <div className="sidebar-nav">
@@ -173,7 +173,7 @@ const SuperAdminDashboard = () => {
         {/* Stats Grid */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
           <div className="glass-panel" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <div style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981', padding: '1rem', borderRadius: 'var(--radius-sm)' }}>
+            <div style={{ background: 'rgba(0, 255, 102, 0.05)', color: 'var(--primary)', border: '1px solid rgba(0, 255, 102, 0.15)', padding: '1rem', borderRadius: 'var(--radius-sm)' }}>
               <School size={24} />
             </div>
             <div>
@@ -183,7 +183,7 @@ const SuperAdminDashboard = () => {
           </div>
 
           <div className="glass-panel" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <div style={{ background: 'rgba(6, 182, 212, 0.15)', color: '#06b6d4', padding: '1rem', borderRadius: 'var(--radius-sm)' }}>
+            <div style={{ background: 'rgba(255, 255, 255, 0.03)', color: '#ffffff', border: '1px solid rgba(255, 255, 255, 0.1)', padding: '1rem', borderRadius: 'var(--radius-sm)' }}>
               <UserPlus size={24} />
             </div>
             <div>
@@ -193,7 +193,7 @@ const SuperAdminDashboard = () => {
           </div>
 
           <div className="glass-panel" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <div style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981', padding: '1rem', borderRadius: 'var(--radius-sm)' }}>
+            <div style={{ background: 'rgba(0, 255, 102, 0.05)', color: 'var(--primary)', border: '1px solid rgba(0, 255, 102, 0.15)', padding: '1rem', borderRadius: 'var(--radius-sm)' }}>
               <Users size={24} />
             </div>
             <div>
@@ -203,7 +203,7 @@ const SuperAdminDashboard = () => {
           </div>
 
           <div className="glass-panel" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <div style={{ background: 'rgba(217, 70, 239, 0.15)', color: '#d946ef', padding: '1rem', borderRadius: 'var(--radius-sm)' }}>
+            <div style={{ background: 'rgba(255, 255, 255, 0.03)', color: '#ffffff', border: '1px solid rgba(255, 255, 255, 0.1)', padding: '1rem', borderRadius: 'var(--radius-sm)' }}>
               <FileText size={24} />
             </div>
             <div>

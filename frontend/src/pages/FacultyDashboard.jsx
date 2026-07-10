@@ -285,9 +285,9 @@ const FacultyDashboard = () => {
     <div className="dashboard-layout">
       {/* Sidebar */}
       <div className="sidebar">
-        <div className="brand">
-          <BookOpen size={26} color="#10b981" />
-          <span>ExamBihar Examiner</span>
+        <div className="brand" style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem' }}>
+          <BookOpen size={22} color="var(--primary)" />
+          <span>exambihar <span style={{ color: 'var(--primary)' }}>~$</span></span>
         </div>
 
         <div className="sidebar-nav">

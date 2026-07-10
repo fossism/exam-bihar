@@ -56,9 +56,9 @@ const StudentDashboard = () => {
     <div className="dashboard-layout">
       {/* Sidebar */}
       <div className="sidebar">
-        <div className="brand">
+        <div className="brand" style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem' }}>
           <GraduationCapIcon />
-          <span>ExamBihar Student</span>
+          <span>exambihar <span style={{ color: 'var(--primary)' }}>~$</span></span>
         </div>
 
         <div className="sidebar-nav">
@@ -296,9 +296,10 @@ const GraduationCapIcon = () => (
     justifyContent: 'center',
     width: '1.75rem',
     height: '1.75rem',
-    borderRadius: '4px',
-    background: 'rgba(16, 185, 129, 0.15)',
-    color: '#10b981',
+    borderRadius: 'var(--radius-sm)',
+    background: 'rgba(0, 255, 102, 0.05)',
+    border: '1px solid rgba(0, 255, 102, 0.2)',
+    color: 'var(--primary)',
   }}>
     <FileText size={16} />
   </div>

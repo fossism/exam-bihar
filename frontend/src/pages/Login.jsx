@@ -199,15 +199,18 @@ const Login = () => {
             justifyContent: 'center',
             width: '3.5rem',
             height: '3.5rem',
-            borderRadius: '50%',
-            background: 'rgba(16, 185, 129, 0.15)',
-            color: '#10b981',
+            borderRadius: 'var(--radius-sm)',
+            background: 'rgba(0, 255, 102, 0.05)',
+            border: '1px solid rgba(0, 255, 102, 0.2)',
+            color: 'var(--primary)',
             marginBottom: '1rem',
           }}>
             <Shield size={28} />
           </div>
-          <h1 style={{ fontSize: '1.75rem', marginBottom: '0.25rem' }}>ExamBihar</h1>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '1.8rem', color: '#fff', marginBottom: '0.25rem' }}>
+            exambihar <span style={{ color: 'var(--primary)' }}>~$</span><span className="terminal-cursor"></span>
+          </h1>
+          <p style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-display)', fontSize: '0.8rem' }}>
             Unified Online Examination System for Bihar Colleges
           </p>
         </div>
@@ -215,7 +218,7 @@ const Login = () => {
         {/* Tab Controls */}
         <div style={{
           display: 'flex',
-          background: 'rgba(255, 255, 255, 0.03)',
+          background: '#000000',
           border: '1px solid var(--border-color)',
           borderRadius: 'var(--radius-sm)',
           padding: '4px',
@@ -223,14 +226,14 @@ const Login = () => {
         }}>
           <button
             className={`btn ${isLogin ? 'btn-primary' : 'btn-secondary'}`}
-            style={{ flex: 1, padding: '0.5rem 0' }}
+            style={{ flex: 1, padding: '0.5rem 0', fontFamily: 'var(--font-display)', fontSize: '0.75rem' }}
             onClick={() => { setIsLogin(true); setError(''); }}
           >
             Student/Faculty Login
           </button>
           <button
             className={`btn ${!isLogin ? 'btn-primary' : 'btn-secondary'}`}
-            style={{ flex: 1, padding: '0.5rem 0' }}
+            style={{ flex: 1, padding: '0.5rem 0', fontFamily: 'var(--font-display)', fontSize: '0.75rem' }}
             onClick={() => { setIsLogin(false); setError(''); }}
           >
             Student Signup
@@ -378,8 +381,8 @@ const Login = () => {
                   onFocus={() => setIsDropdownOpen(true)}
                   required
                   style={{
-                    background: 'rgba(255, 255, 255, 0.04)',
-                    borderColor: regCollegeId ? 'var(--primary)' : 'rgba(255, 255, 255, 0.1)',
+                    background: '#000000',
+                    borderColor: regCollegeId ? 'var(--primary)' : 'var(--border-color)',
                   }}
                 />
                 <span
@@ -405,10 +408,10 @@ const Login = () => {
                   top: '100%',
                   left: 0,
                   right: 0,
-                  background: '#111318',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  background: 'var(--bg-secondary)',
+                  border: '1px solid var(--border-color)',
                   borderRadius: 'var(--radius-sm)',
-                  boxShadow: '0 10px 25px rgba(0,0,0,0.5)',
+                  boxShadow: '0 10px 25px rgba(0,0,0,0.7)',
                   maxHeight: '220px',
                   overflowY: 'auto',
                   zIndex: 99,
@@ -430,11 +433,12 @@ const Login = () => {
                         style={{
                           padding: '0.75rem 1rem',
                           cursor: 'pointer',
-                          fontSize: '0.9rem',
-                          color: regCollegeId === c._id ? 'var(--primary-hover)' : 'var(--text-main)',
-                          background: regCollegeId === c._id ? 'rgba(16, 185, 129, 0.1)' : 'transparent',
+                          fontSize: '0.85rem',
+                          fontFamily: 'var(--font-mono)',
+                          color: regCollegeId === c._id ? 'var(--primary)' : 'var(--text-main)',
+                          background: regCollegeId === c._id ? 'rgba(0, 255, 102, 0.08)' : 'transparent',
                           transition: 'background 0.2s',
-                          borderBottom: '1px solid rgba(255,255,255,0.02)',
+                          borderBottom: '1px solid var(--border-color)',
                         }}
                         className="dropdown-item-hover"
                       >

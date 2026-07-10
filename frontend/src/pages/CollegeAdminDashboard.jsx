@@ -177,9 +177,9 @@ const CollegeAdminDashboard = () => {
     <div className="dashboard-layout">
       {/* Sidebar */}
       <div className="sidebar">
-        <div className="brand">
-          <Award size={26} color="#10b981" />
-          <span>ExamBihar Admin</span>
+        <div className="brand" style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem' }}>
+          <Award size={22} color="var(--primary)" />
+          <span>exambihar <span style={{ color: 'var(--primary)' }}>~$</span></span>
         </div>
 
         <div className="sidebar-nav">
@@ -459,7 +459,7 @@ const CollegeAdminDashboard = () => {
                         <td style={{ fontWeight: '500' }}>{std.name}</td>
                         <td>{std.email}</td>
                         <td>
-                          <span style={{ fontFamily: 'monospace', color: '#10b981' }}>{std.regNumber}</span>
+                          <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--primary)' }}>{std.regNumber}</span>
                         </td>
                         <td>{std.branch}</td>
                         <td>

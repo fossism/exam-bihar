@@ -108,13 +108,13 @@ const LiveProctor = () => {
   };
 
   return (
-    <div style={{ padding: '2rem', minHeight: '100vh', background: '#070a13' }}>
+    <div style={{ padding: '2rem', minHeight: '100vh', background: 'var(--bg-primary)' }}>
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border-color)', paddingBottom: '1rem', marginBottom: '2rem' }}>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Video size={24} color="#ef4444" />
-            <h1 style={{ fontSize: '1.5rem', letterSpacing: '-0.02em' }}>Live Proctor Command Console</h1>
+            <Video size={24} color="var(--danger)" />
+            <h1 style={{ fontSize: '1.5rem', letterSpacing: '-0.02em', fontFamily: 'var(--font-display)' }}>Live Proctor Command Console</h1>
           </div>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '0.25rem' }}>
             Exam: <strong style={{ color: 'white' }}>{examDetails?.title || 'Loading...'}</strong> | Subject: {examDetails?.subject}
@@ -162,8 +162,8 @@ const LiveProctor = () => {
                 className="glass-panel"
                 style={{
                   padding: '1.25rem',
-                  border: hasCheated ? '1px solid rgba(245,158,11,0.4)' : '1px solid var(--border-color)',
-                  background: hasCheated ? 'linear-gradient(to bottom, rgba(245,158,11,0.03), rgba(0,0,0,0.4))' : 'rgba(22, 28, 45, 0.7)',
+                  border: hasCheated ? '1px solid var(--warning)' : '1px solid var(--border-color)',
+                  background: hasCheated ? 'rgba(255, 204, 0, 0.02)' : 'var(--bg-secondary)',
                 }}
               >
                 {/* Webcam Preview Screen */}
@@ -211,7 +211,7 @@ const LiveProctor = () => {
                   </div>
 
                   {/* Anti-cheat alerts */}
-                  <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.5rem', padding: '0.5rem', background: 'rgba(0,0,0,0.15)', borderRadius: '4px', fontSize: '0.75rem' }}>
+                  <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.5rem', padding: '0.5rem', background: '#000000', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-sm)', fontSize: '0.75rem', fontFamily: 'var(--font-mono)' }}>
                     <div style={{ flex: 1, textAlign: 'center', borderRight: '1px solid rgba(255,255,255,0.05)' }}>
                       <p style={{ color: 'var(--text-muted)' }}>Tab Switches</p>
                       <strong style={{ color: attempt.tabSwitches > 0 ? 'var(--warning)' : 'white', fontSize: '0.9rem' }}>
@@ -220,7 +220,7 @@ const LiveProctor = () => {
                     </div>
                     <div style={{ flex: 1, textAlign: 'center' }}>
                       <p style={{ color: 'var(--text-muted)' }}>FS Escapes</p>
-                      <strong style={{ color: attempt.fullscreenViolations > 0 ? '#ef4444' : 'white', fontSize: '0.9rem' }}>
+                      <strong style={{ color: attempt.fullscreenViolations > 0 ? 'var(--danger)' : 'white', fontSize: '0.9rem' }}>
                         {attempt.fullscreenViolations}
                       </strong>
                     </div>
@@ -231,7 +231,7 @@ const LiveProctor = () => {
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginTop: '1rem' }}>
                       <button
                         className="btn btn-secondary"
-                        style={{ padding: '0.35rem', fontSize: '0.75rem', borderColor: 'rgba(239,68,68,0.2)', color: '#f87171' }}
+                        style={{ padding: '0.35rem', fontSize: '0.75rem', borderColor: 'rgba(255,51,51,0.2)', color: 'var(--danger)' }}
                         onClick={() => handleDisqualify(attempt._id, attempt.studentId?.name)}
                       >
                         Disqualify
