@@ -222,6 +222,220 @@ const seedData = async () => {
 
     console.log('Questions seeded successfully.');
 
+    // Communicative English Questions
+    const ce1 = await Question.create({
+      collegeId: college1._id,
+      subject: 'Communicative English',
+      topic: 'Articles',
+      type: 'MCQ',
+      text: 'Choose the correct use of articles:',
+      options: [
+        'The gold is a precious metal.',
+        'Gold is the precious metal.',
+        'Gold is a precious metal.',
+        'The gold is the precious metal.'
+      ],
+      correctOption: 2,
+      difficulty: 'Easy',
+      points: 2,
+      createdBy: faculty._id,
+    });
+
+    const ce2 = await Question.create({
+      collegeId: college1._id,
+      subject: 'Communicative English',
+      topic: 'Error Correction',
+      type: 'MCQ',
+      text: 'Identify the error in the sentence: "She lives in a United States."',
+      options: [
+        'Incorrect noun',
+        'Wrong preposition',
+        'Incorrect article',
+        'Sentence is correct'
+      ],
+      correctOption: 2,
+      difficulty: 'Easy',
+      points: 2,
+      createdBy: faculty._id,
+    });
+
+    const ce3 = await Question.create({
+      collegeId: college1._id,
+      subject: 'Communicative English',
+      topic: 'Subject-Verb Agreement',
+      type: 'MCQ',
+      text: 'Identify the correct sentence:',
+      options: [
+        'He is married with a doctor.',
+        'He is married for a doctor.',
+        'He is married to a doctor.',
+        'He is married of a doctor.'
+      ],
+      correctOption: 2,
+      difficulty: 'Easy',
+      points: 2,
+      createdBy: faculty._id,
+    });
+
+    const ce4 = await Question.create({
+      collegeId: college1._id,
+      subject: 'Communicative English',
+      topic: 'Redundancy',
+      type: 'MCQ',
+      text: 'What is the error in the sentence: "We discussed about the plan."',
+      options: [
+        "'discussed' is wrong",
+        "'the' should be removed",
+        "'about' is unnecessary",
+        'No error'
+      ],
+      correctOption: 2,
+      difficulty: 'Easy',
+      points: 2,
+      createdBy: faculty._id,
+    });
+
+    const ce5 = await Question.create({
+      collegeId: college1._id,
+      subject: 'Communicative English',
+      topic: 'Tenses',
+      type: 'MCQ',
+      text: 'By the time the server restarted, the engineers ______ the faulty module and ______ a temporary patch.',
+      options: [
+        '(a) identify (b) deploy',
+        '(a) had identified; (b) had deployed',
+        '(a) will identify; (b) will deploy',
+        '(a) have identified; (b) deployed'
+      ],
+      correctOption: 1,
+      difficulty: 'Medium',
+      points: 2,
+      createdBy: faculty._id,
+    });
+
+    const ce6 = await Question.create({
+      collegeId: college1._id,
+      subject: 'Communicative English',
+      topic: 'Tenses',
+      type: 'MCQ',
+      text: 'The research team ______ data for two years before the funding ______ renewed.',
+      options: [
+        '(a) has collected; (b) will be',
+        '(a) collected; (b) was being',
+        '(a) had been collecting; (b) was',
+        '(a) is collecting (b) is'
+      ],
+      correctOption: 2,
+      difficulty: 'Medium',
+      points: 2,
+      createdBy: faculty._id,
+    });
+
+    const ce7 = await Question.create({
+      collegeId: college1._id,
+      subject: 'Communicative English',
+      topic: 'Voice',
+      type: 'MCQ',
+      text: 'The faulty sensor ______ the machine to malfunction, but the error ______ quickly.',
+      options: [
+        '(a) was caused; (b) fixed',
+        '(a) causes; (b) will fix',
+        '(a) caused; (b) was fixed',
+        '(a) is causing; (b) is fixing'
+      ],
+      correctOption: 2,
+      difficulty: 'Medium',
+      points: 2,
+      createdBy: faculty._id,
+    });
+
+    const ce8 = await Question.create({
+      collegeId: college1._id,
+      subject: 'Communicative English',
+      topic: 'Modals',
+      type: 'MCQ',
+      text: 'Due to heavy traffic, the team ______ reach the venue on time, but they ______ complete the presentation virtually.',
+      options: [
+        "(a) can't (b) should",
+        "(a) shouldn't (b) must",
+        '(a) may not; (b) can',
+        '(a) must not; (b) might'
+      ],
+      correctOption: 2,
+      difficulty: 'Medium',
+      points: 2,
+      createdBy: faculty._id,
+    });
+
+    const ce9 = await Question.create({
+      collegeId: college1._id,
+      subject: 'Communicative English',
+      topic: 'Professional Writing',
+      type: 'MCQ',
+      text: 'To make writing clear, the writer must ______ vague expressions and ______ specific terms.',
+      options: [
+        '(a) use; (b) remove',
+        '(a) avoid; (b) select',
+        '(a) expand; (b) divide',
+        '(a) confuse; (b) enhance'
+      ],
+      correctOption: 1,
+      difficulty: 'Medium',
+      points: 2,
+      createdBy: faculty._id,
+    });
+
+    const ce10 = await Question.create({
+      collegeId: college1._id,
+      subject: 'Communicative English',
+      topic: 'Coherence',
+      type: 'MCQ',
+      text: 'Coherence demands that each part of the writing ______ with the central idea and that transitions ______ the reader through the text.',
+      options: [
+        '(a) disagree; (b) mislead',
+        '(a) align (b) guide',
+        '(a) contradict; (b) confuse',
+        '(a) drift; (b) divert'
+      ],
+      correctOption: 1,
+      difficulty: 'Medium',
+      points: 2,
+      createdBy: faculty._id,
+    });
+
+    const ce11 = await Question.create({
+      collegeId: college1._id,
+      subject: 'Communicative English',
+      topic: 'Memorandum Writing',
+      type: 'Descriptive',
+      text: 'Your college is upgrading all classrooms with digital smartboards. As the Head of the Department, draft a memorandum to all faculty members instructing them to submit their specific requirements (markers, cables, software preferences) within three working days. Use appropriate format and invent necessary details.',
+      difficulty: 'Medium',
+      points: 8,
+      createdBy: faculty._id,
+    });
+
+    const ce12 = await Question.create({
+      collegeId: college1._id,
+      subject: 'Communicative English',
+      topic: 'Email Writing',
+      type: 'Descriptive',
+      text: 'You are unable to submit your project by the deadline due to a medical emergency. Write an email to your faculty requesting an extension, attaching proof and proposing a new date. Use appropriate format and invent necessary details.',
+      difficulty: 'Medium',
+      points: 8,
+      createdBy: faculty._id,
+    });
+
+    const ce13 = await Question.create({
+      collegeId: college1._id,
+      subject: 'Communicative English',
+      topic: 'Ethics',
+      type: 'Descriptive',
+      text: 'Write an analytical essay in about 300-350 words on "The Role of Engineering Ethics in Preventing Technological Misuse."',
+      difficulty: 'Hard',
+      points: 10,
+      createdBy: faculty._id,
+    });
+
     // 7. Create Scheduled Exams
     const now = new Date();
     
@@ -270,6 +484,30 @@ const seedData = async () => {
         tabSwitchLimit: 0,
       },
       randomizeQuestions: true,
+      createdBy: faculty._id,
+    });
+
+    // Active Communicative English Exam (Starts 5 mins ago, ends in 4 hours)
+    const communicativeEnglishExamStart = new Date(now.getTime() - 5 * 60 * 1000);
+    const communicativeEnglishExamEnd = new Date(now.getTime() + 4 * 60 * 60 * 1000);
+
+    await Exam.create({
+      title: 'B.Tech 1st Semester Exam 2024 (V10) - Communicative English',
+      description: 'Official Bihar Engineering University (BEU) 2024 Communicative English Examination (Paper 2024_v10). Attempt compulsory MCQ section and selected descriptive letters/essays.',
+      collegeId: college1._id,
+      subject: 'Communicative English',
+      duration: 120, // 2 hours
+      startTime: communicativeEnglishExamStart,
+      endTime: communicativeEnglishExamEnd,
+      questions: [ce1._id, ce2._id, ce3._id, ce4._id, ce5._id, ce6._id, ce7._id, ce8._id, ce9._id, ce10._id, ce11._id, ce12._id, ce13._id],
+      branches: ['CSE', 'ECE', 'EE', 'ME', 'CE', 'IT'],
+      semester: 6, // Make it Semester 6 so student Aarav can view and attempt it immediately!
+      proctoringSettings: {
+        webcamSnapshots: true,
+        fullscreenLock: true,
+        tabSwitchLimit: 3,
+      },
+      randomizeQuestions: false,
       createdBy: faculty._id,
     });
 
